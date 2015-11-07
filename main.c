@@ -21,6 +21,7 @@ void parseMIPS(char *file){
     FILE *pointerFile;
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     char *token;
     char *delimiter = " ,\t\r\n";
 
@@ -28,6 +29,8 @@ void parseMIPS(char *file){
     if(pointerFile == NULL){
         printf("file not found");
 =======
+=======
+>>>>>>> origin/master
     pointerFile = fopen("/Users/rui/Google Drive/UO/Fall 2015/CIS 314/Processor-Assignment1/MispTestFiles/function.asm", "r"); //using the functions MIPS code to test.
     if(!pointerFile){
         printf("File not found");
