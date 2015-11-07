@@ -6,7 +6,7 @@
 
 int main()
 {
-    printf("Hello world!\n");
+    printf("Hello world here's a test commit!\n");
     FILE *pointerFile;
     char buffer[MAX_LINE]; // max length of one line of code
     char* instructionMIPS[MAX_LENGTH]; //100 lines of code
