@@ -1,9 +1,0 @@
-# depslib dependency file v1.0
-1446723449 source:c:\users\haley\desktop\cs314 processor\processor\main.c
-	<stdio.h>
-	<stdlib.h>
-
-1446719525 source:c:\users\haley\desktop\cs314 processor\processor\readfile.c
-	<stdio.h>
-	<stdlib.h>
-

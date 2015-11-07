@@ -1,17 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 #define MAX_LINE 100
 #define MAX_LENGTH 100
 
 int main()
 {
-    printf("Hello world!\n");
     FILE *pointerFile;
     char buffer[MAX_LINE]; // max length of one line of code
     char* instructionMIPS[MAX_LENGTH]; //100 lines of code
 
-    pointerFile = fopen("function.asm", "r"); //using the functions MIPS code to test.
+    pointerFile = fopen("/Users/rui/Google Drive/UO/Fall 2015/CIS 314/Processor-Assignment1/MispTestFiles/function.asm", "r"); //using the functions MIPS code to test.
     if(!pointerFile){
         printf("File not found");
         return 0;
