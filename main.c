@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
+
 #define MAX_LINE 100
 #define MAX_LENGTH 100
 
@@ -20,22 +20,12 @@ void parseMIPS(char *file){
     char* MIPSInstructions[MAX_LENGTH][MAX_LENGTH];
     FILE *pointerFile;
 
-<<<<<<< HEAD
-<<<<<<< HEAD
     char *token;
     char *delimiter = " ,\t\r\n";
 
     pointerFile = fopen(file, "r");
     if(pointerFile == NULL){
         printf("file not found");
-=======
-=======
->>>>>>> origin/master
-    pointerFile = fopen("/Users/rui/Google Drive/UO/Fall 2015/CIS 314/Processor-Assignment1/MispTestFiles/function.asm", "r"); //using the functions MIPS code to test.
-    if(!pointerFile){
-        printf("File not found");
-        return 0;
->>>>>>> origin/master
     }
 
     fseek(pointerFile, 0, SEEK_SET);
@@ -61,6 +51,7 @@ void parseMIPS(char *file){
     //printf("example test = [%s]", MIPSInstructions[13][3]);
 
 }
+
 
 //PREVIOUS IMPLEMENTATION USED THIS. Still keeping just in case.
 /*
