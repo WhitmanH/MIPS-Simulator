@@ -2,9 +2,13 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/ALU" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/ControlLogic" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.c" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/src/ReadFile.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Memory" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/MispTestFiles" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/Registers" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
