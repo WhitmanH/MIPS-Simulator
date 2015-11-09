@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/main.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Memory" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MispTestFiles" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/PC" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Registers" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />

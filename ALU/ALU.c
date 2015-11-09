@@ -82,18 +82,3 @@ int32_t ALU(uint8_t opcode, int32_t operand_A, int32_t operand_B, int *status_ou
 
     return out;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
