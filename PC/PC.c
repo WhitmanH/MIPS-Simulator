@@ -2,10 +2,13 @@
 #include <stdlib.h>
 #include "PC.h"
 
-
-int goto_next_instruction(*pc) {
-    *pc++;
+/*
+ * input: the pc variable pointer
+ * */
+void goto_next_instruction() {
+    pc = pc + 4;
 }
 
-
-int goto_instruction(int )
+void goto_instruction(int instruction_location) {
+    pc = pc + instruction_location;
+}

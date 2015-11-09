@@ -1,6 +1,8 @@
 #define REGISTER_NUMBER 32
 #define REGISTER_NAME_LENGTH 5
 
+int reg_write;
+
 int register_file[REGISTER_NUMBER] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 char register_numerical_names[REGISTER_NUMBER][REGISTER_NAME_LENGTH] = {"$0", "$1", "$2", "$3", "$4", "$5", "$6", "$7", "$8", "$9"

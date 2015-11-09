@@ -35,4 +35,4 @@
 //#define ALU_SUBU        0x12
 //#define ALU_MUL         0x13
 
-int32_t alu(int32_t aluin0, int32_t aluin1, uint8_t op, uint32_t *flags);
+int32_t ALU(uint8_t opcode, int32_t operand_A, int32_t operand_B, int *status_out);
