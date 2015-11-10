@@ -28,9 +28,9 @@ main:	addi	$s0, $0, 12		# Fib(4)
 Fib:
 								# procedure prologue:
 		sw		$ra,($sp)		# save return address on stack, since recursive,
-		addi	$sp,$sp,-4		#   and decrement stack pointer
+		addi	$sp,$sp,-4		# and decrement stack pointer
 		sw		$fp,($sp)		# save previous frame pointer on stack
-		addi	$sp,$sp,-4		#   and decrement stack pointer
+		addi	$sp,$sp,-4		# and decrement stack pointer
 		addi	$fp,$sp,12		# set frame pointer to point at base of stack frame
 		lw		$t0,($fp)		# copy argument to $t0:  $t0 = n
 		addi	$t1, $0, 2	

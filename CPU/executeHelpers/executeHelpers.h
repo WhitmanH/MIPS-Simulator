@@ -7,8 +7,12 @@
 
 #endif //PROCESSOR_ASSIGNMENT1_EXECUTEHELPERS_H
 
-int find_register_index(char* register_name[]);
-int find_register_value(char* register_name[]);
-void register_load_word(int register_index, int base_address, int offset);
-void register_store_word(int register_index, int base_address, int offset);
-void branch_equal_to (int reg_index1, int reg_index2, int offset, int* pc);
+int find_register_index(char* register_name);
+int find_register_value(char* register_name);
+void exec_add(char* destination_register_name, char* register1_name, char* register2_name);
+void exec_sub(char* destination_register_name, char* register1_name, char* register2_name);
+void exec_slt(char* destination_register_name, char* register1_name, char* register2_name);
+void load_word(int register_index, int base_address, int offset);
+void store_word(int register_index, int base_address, int offset);
+void branch_equal_to (int reg_index1, int reg_index2, char* label);
+void branch_not_equal_to (int reg_index1, int reg_index2, char* label);

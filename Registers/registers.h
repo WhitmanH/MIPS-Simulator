@@ -1,8 +1,6 @@
 #define REGISTER_NUMBER 32
 #define REGISTER_NAME_LENGTH 5
 
-int reg_write;
-
 int register_file[REGISTER_NUMBER] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
 
 char register_numerical_names[REGISTER_NUMBER][REGISTER_NAME_LENGTH] = {"$0", "$1", "$2", "$3", "$4", "$5", "$6", "$7", "$8", "$9"
@@ -15,3 +13,8 @@ char register_string_names[REGISTER_NUMBER][REGISTER_NAME_LENGTH] = {"$zero", "$
         , "$s4", "$s5", "$s6", "$s7", "$s8", "$k0", "$k1", "$gp", "$sp", "$f0"
         , "$f12", "$f13"};
 
+
+void write_data_to_reg(char* register_name, int data);
+int find_register_value(char* register_name);
+int find_register_index(char* register_name);
+int get_immediate(char* immediate_name);

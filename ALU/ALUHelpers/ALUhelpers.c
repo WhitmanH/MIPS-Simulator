@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include "../ALU.h"
 
 int add_overflow(int32_t a, int32_t b){
     int32_t c = a + b;
@@ -17,4 +18,12 @@ int sub_overflow(int32_t a, int32_t b){
     if (a < 0 && b >= 0 && c>= 0)
         return 1;
     return 0;
+}
+
+void set_signal_integer_overflow(int *flag) {
+    *flag = OVERFLOW_SIGNAL;
+}
+
+void set_signal_zero_out(int *flag) {
+    *flag = ZERO_OUT_SIGNAL;
 }

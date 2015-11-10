@@ -1,4 +1,3 @@
-#define MAX_MEM_SPACE 1000;
-extern char Instruction_Memory[5000][5000];
-extern int Data_Memor[];
+extern char Instruction_Memory[1000][1000];
+extern int Data_Memor[1000];
 

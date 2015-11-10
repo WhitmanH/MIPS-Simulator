@@ -7,6 +7,9 @@ int read_data_from_memory(int memory_address) {
 }
 
 
+/*
+ * TODO: implement wrtie_data_to_memory
+ * */
 void write_data_to_memory(int memory_address, int data) {
 
 }
