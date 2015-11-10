@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include "../PC/PC.h"
 
+// TODO: implement the control logic that tell other unit which instruction to execute.
+
 int control_logic(char* instruction[]) {
     // since we got instruction we increment the PC
     goto_next_instruction();

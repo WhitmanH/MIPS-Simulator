@@ -24,7 +24,7 @@ int find_register_index(char* register_name) {
 }
 
 
-/* input: a string of regist name
+/* input: a string of register name
  * output: the current value of this register
  * */
 int find_register_value(char* register_name) {
