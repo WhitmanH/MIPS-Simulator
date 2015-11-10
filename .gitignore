@@ -43,6 +43,8 @@ Temporary Items
 .apdisk
 .idea
 CMakeLists.txt
+main.exe
+main.o
 Processor.cbp
 Processor.depend
 Processor.layout
