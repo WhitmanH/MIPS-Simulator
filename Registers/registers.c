@@ -7,7 +7,7 @@
 #include "../ALU/ALU.h"
 
 
-void write_data_to_reg(char* register_name, int data){
+void write_data_to_register(char* register_name, int data){
     int regfile_index = find_register_index(register_name);
     register_file[regfile_index] = data;
 }

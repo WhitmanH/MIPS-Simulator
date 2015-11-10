@@ -4,9 +4,10 @@
 #include "../../Registers/registers.h"
 #include "../../ALU/ALU.h"
 #include "../../PC/PC.h"
+#include "../../Memory/memory.h"
 
 
-/*
+/* TODO: implement the following instruction
  * jal
  * j
  * jr
@@ -41,13 +42,14 @@ void exec_add(char* destination_register_name, char* register1_name, char* regis
     register1_value = find_register_value(register1_name);
     register2_value = find_register_value(register2_name);
 
-    write_data_to_reg(destination_register_name, ALU(ALU_ADD, register1_value, register2_value, &flag_out));
+    write_data_to_register(destination_register_name, ALU(ALU_ADD, register1_value, register2_value, &flag_out));
 
     if (flag_out == OVERFLOW_SIGNAL) {
         fprintf(stderr, "%d + %d is overflow\n", register1_value, register2_value);
         exit(1);
     }
 }
+
 
 /* input:  two register names in string
  * do the caculation than write data back to destination register
@@ -61,7 +63,7 @@ void exec_addi(char* destination_register_name, char* register1_name, char* imme
     register1_value = find_register_value(register1_name);
     immediate_value = get_immediate(immediate_name);
 
-    write_data_to_reg(destination_register_name, ALU(ALU_ADD, register1_value, immediate_value, &flag_out));
+    write_data_to_register(destination_register_name, ALU(ALU_ADD, register1_value, immediate_value, &flag_out));
 
     if (flag_out == OVERFLOW_SIGNAL) {
         fprintf(stderr, "%d + %d is overflow\n", register1_value, immediate_value);
@@ -83,7 +85,7 @@ void exec_sub(char* destination_register_name, char* register1_name, char* regis
     register1_value = find_register_value(register1_name);
     register2_value = find_register_value(register2_name);
 
-    write_data_to_reg(destination_register_name, ALU(ALU_SUB, register1_value, register2_value, &flag_out));
+    write_data_to_register(destination_register_name, ALU(ALU_SUB, register1_value, register2_value, &flag_out));
 
     if (flag_out == OVERFLOW_SIGNAL) {
         fprintf(stderr, "%d - %d is overflow\n", register1_value, register2_value);
@@ -103,7 +105,7 @@ void exec_slt(char* destination_register_name, char* register1_name, char* regis
     register1_value = find_register_value(register1_name);
     register2_value = find_register_value(register2_name);
 
-    write_data_to_reg(destination_register_name, ALU(ALU_SLT, register1_value, register2_value, &flag_out));
+    write_data_to_register(destination_register_name, ALU(ALU_SLT, register1_value, register2_value, &flag_out));
 }
 
 void exec_sltu(char* destination_register_name, char* register1_name, char* register2_name) {
@@ -114,30 +116,27 @@ void exec_sltu(char* destination_register_name, char* register1_name, char* regi
     register1_value = find_register_value(register1_name);
     register2_value = find_register_value(register2_name);
 
-    write_data_to_reg(destination_register_name, ALU(ALU_SLTU, register1_value, register2_value, &flag_out));
+    write_data_to_register(destination_register_name, ALU(ALU_SLTU, register1_value, register2_value, &flag_out));
 }
 
 
 
 /*============================= memory type, read or store ============================ */
 
-/* input:int register_index int base_memory_address, int_16 offset
- * clear the memory slot and load the word to register file
- * eg: lw, $t0, 4($s0)
- * TODO: implement re_load_word
- * */
-void load_word(int register_index, int base_address, int offset){
-    // we will need a unit to sign-extend the 16-bit offset field in the instruction
-    // to a 32-bit signed value, and a data memory unit to read from or write to.
+
+void load_word(char* target_register_name, char* base_address_register_name, int offset){
+    int memory_index                    = find_register_value(base_address_register_name);
+    int retrieved_value = read_data_from_memory(memory_index + offset/4);
+    write_data_to_register(target_register_name, retrieved_value);
+    DATA_MEMORY_GLOBAL[memory_index + offset/4] = 0; // set the value slot to zero
 }
 
-/* input: int register_index int base_memory_address, int16_t offset*
- * store the word in the address of the memory
- * TODO: implement re_store_word
- * */
-void store_word(int register_index, int base_address, int offset) {
-    // we will need a unit to sign-extend the 16-bit offset field in the instruction
-    // to a 32-bit signed value, and a data memory unit to read from or write to.
+
+
+void store_word(char* target_register_name, char* base_address_register_name, int offset){
+    int memory_index = find_register_value(base_address_register_name);
+    int retrieved_value = find_register_value(target_register_name);
+    write_data_to_memory(memory_index + offset/4, retrieved_value);
 }
 
 

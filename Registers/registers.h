@@ -14,7 +14,7 @@ char register_string_names[REGISTER_NUMBER][REGISTER_NAME_LENGTH] = {"$zero", "$
         , "$f12", "$f13"};
 
 
-void write_data_to_reg(char* register_name, int data);
+void write_data_to_register(char* register_name, int data);
 int find_register_value(char* register_name);
 int find_register_index(char* register_name);
 int get_immediate(char* immediate_name);
