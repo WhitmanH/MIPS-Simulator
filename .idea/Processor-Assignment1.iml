@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/ALU" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/ControlLogic" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CPU" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/main.c" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Memory" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/MispTestFiles" isTestSource="false" />

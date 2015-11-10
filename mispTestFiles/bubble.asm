@@ -42,6 +42,7 @@ loop: beq $t0,$zero,done
 next: addi $t1,$t1,4        # pa++
 	  addi $t0,$t0,-1       # $t0 = $t0 -1
       j loop
+
 done: bne $t2,$zero,main    # if (exchange) goto main
 
 end: 
