@@ -1,25 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 #define MAX_LINE 100
 #define MAX_LENGTH 100
 
-int main()
-{
-    printf("Hello world here's a test commit!\n");
-    char *fileToRead = "function.asm";
-    parseMIPS(fileToRead);
-
-
-    printf("\nFinished Main");
-
-    return 0;
-}
-
 void parseMIPS(char *file){
-    char* MIPSInstructions[MAX_LENGTH][MAX_LENGTH];
+    char MIPSInstructions[MAX_LENGTH][MAX_LENGTH];
     char* savedLabel[10];
-    int* savedLabelIndex[10]; //HACK compare these two arrays to find index of label to return to it.
+    int savedLabelIndex[10]; //HACK compare these two arrays to find index of label to return to it.
     char* actualMIPS[MAX_LENGTH];
     FILE *pointerFile;
 
@@ -30,7 +19,6 @@ void parseMIPS(char *file){
     if(pointerFile == NULL){
         printf("file not found");
     }
-
     fseek(pointerFile, 0, SEEK_SET);
     int i = 0;
     int j = 0; //start from second part in the array, as 0 is only for the label.
@@ -41,7 +29,7 @@ void parseMIPS(char *file){
                 break;
             }
 
-            if(token[strlen(token)-1] == ':'){ //labels end with :
+            else if(token[strlen(token)-1] == ':'){ //labels end with :
                 savedLabel[j] = token;
                 savedLabelIndex[j] = i;
                 j = j + 1;
@@ -55,16 +43,36 @@ void parseMIPS(char *file){
         printf("\n");
     }
     fclose(pointerFile);
+    /*
     int a=0;
+    int b = 0;
     while(actualMIPS[a] != NULL){
         printf("[%s]", actualMIPS[a++]);
     }
-
+	/*
     int b;
     for(b=0; b<sizeOfIndexArray; b++){
         printf("\nlabel %s is at index %d", savedLabel[b], savedLabelIndex[b]);
-    }
+    }*/
+
+    //printf("%s\n", MIPSInstructions[0]);
 }
+
+int main()
+{
+    printf("Hello world here's a test commit!\n");
+    char *fileToRead = "fibonacci.asm";
+    parseMIPS(fileToRead);
+
+
+    printf("\nFinished Main");
+
+    return 0;
+}
+
+
+
+
 
 
 //PREVIOUS IMPLEMENTATION USED THIS. Still keeping just in case.
@@ -73,14 +81,11 @@ int isBlankLine(const char *line) {
     const char accept[]=" \t\r\n"; // any white spaces or simnly \n.
     return (strspn(line, accept) == strlen(line));
 }
-
 void trimWhiteSpace(char *line) {
     char *newLine = line;
     int l = strlen(newLine);
-
     while(isspace(newLine[l - 1])) newLine[--l] = 0;
     while(*newLine && isspace(*newLine)) ++newLine, --l;
-
     memmove(line, newLine, l + 1);
 }
 */
