@@ -6,9 +6,8 @@
 #define MAX_LENGTH 100
 
 void parseMIPS(char *file){
-    char MIPSInstructions[MAX_LENGTH][MAX_LENGTH];
-    char* savedLabel[10];
-    int savedLabelIndex[10]; //HACK compare these two arrays to find index of label to return to it.
+    char MIPSInstructions[MAX_LENGTH][5];
+    char buffer[MAX_LINE];
     char* actualMIPS[MAX_LENGTH];
     FILE *pointerFile;
 
@@ -21,28 +20,31 @@ void parseMIPS(char *file){
     }
     fseek(pointerFile, 0, SEEK_SET);
     int i = 0;
-    int j = 0; //start from second part in the array, as 0 is only for the label.
+    int p = 1;
     int sizeOfIndexArray = 0;
-    while(i < MAX_LINE && fgets(MIPSInstructions[i], MAX_LINE, pointerFile)){
-        for(token = strtok(MIPSInstructions[i], delimiter); token; token=strtok(NULL, delimiter)){
+    while(i < MAX_LINE && fgets(buffer, MAX_LINE, pointerFile)){
+        char temp[5][100];
+        for(token = strtok(buffer, delimiter); token; token=strtok(NULL, delimiter)){
             if(token[0] == '#'){ // a comment
                 break;
             }
 
             else if(token[strlen(token)-1] == ':'){ //labels end with :
-                savedLabel[j] = token;
-                savedLabelIndex[j] = i;
-                j = j + 1;
-                sizeOfIndexArray++;
+                //MIPSInstructions[i][0] = token;
+                strncpy(&MIPSInstructions[i][0], token, 10);
+            } else{
+                //MIPSInstructions[i][p++] = token;
+                strncpy(&MIPSInstructions[i][p++], token, 10);
+                printf("%s\n", token);
             }
-
-            actualMIPS[i] = token;
-            i++;
-            printf("[%s]", token);
         }
-        printf("\n");
+        i++;
+        p = 1;
     }
+
     fclose(pointerFile);
+    }
+
     /*
     int a=0;
     int b = 0;
@@ -56,7 +58,7 @@ void parseMIPS(char *file){
     }*/
 
     //printf("%s\n", MIPSInstructions[0]);
-}
+
 
 int main()
 {
