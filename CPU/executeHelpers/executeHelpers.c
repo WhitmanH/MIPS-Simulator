@@ -113,8 +113,7 @@ void exec_mult(char* destination_register_name, char* register1_name, char* regi
 
 /* input:  three register names in string
  * TESTED
-=======
-/* input:  two register names in string
+ * input:  two register names in string
  * do the caculation than write data back to destination register
  * eg: add, $t0, $t1, $t3
  * */
