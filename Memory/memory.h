@@ -1,8 +1,4 @@
-
-char INSTRUCTION_MEMORY_GLOBAL[100][5][15] = {{"null", "addi", "$t0", "$zero", "100" },
-                                                {"NULL", "addi", "$t1", "$zero", "100"},
-                                                {"for:", "sltu", "$t2", "$t0", "$t1"},
-                                                {"null", "beq", "$t0", "$t1", "for" }};
+char INSTRUCTION_MEMORY_GLOBAL[100][5][15];
 int DATA_MEMORY_GLOBAL[1000];
 int INSTRUCTION_MEMORY_GLOBAL_LENGTH;
 

@@ -9,11 +9,16 @@
 
 int main()
 {
+    int pc = 1;
+    char *inst[][200] = {{"null", "addi", "$t0", "$zero", "99999" }, {"null", "add", "$t1", "$t1", "$t0"}, {"null", "sub", "t1", "t1", "t1"}};
 
-    exec_addi(INSTRUCTION_MEMORY_GLOBAL[0][2], INSTRUCTION_MEMORY_GLOBAL[0][3], INSTRUCTION_MEMORY_GLOBAL[0][4]);
-    exec_addi(INSTRUCTION_MEMORY_GLOBAL[1][2], INSTRUCTION_MEMORY_GLOBAL[1][3], INSTRUCTION_MEMORY_GLOBAL[1][4]);
+    exec_addi(inst[0][2], inst[0][3], inst[0][4]);
+    exec_add (inst[1][2], inst[1][3], inst[1][4]);
+    exec_sub (inst[2][2], inst[2][3], inst[2][4]);
 
-    branch_not_equal_to(INSTRUCTION_MEMORY_GLOBAL[3][2], INSTRUCTION_MEMORY_GLOBAL[3][3], INSTRUCTION_MEMORY_GLOBAL[3][4]);
+
+    printf("%s's value is %d", register_string_names[8], register_file[8]);
+
 
     return 0;
 }

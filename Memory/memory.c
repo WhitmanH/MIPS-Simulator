@@ -1,5 +1,6 @@
-#include "memory.h"
+//#include "memory.h"
 
+int DATA_MEMORY_GLOBAL[];
 
 
 int read_data_from_memory(int memory_index) {

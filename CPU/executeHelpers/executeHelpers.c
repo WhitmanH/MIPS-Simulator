@@ -1,9 +1,8 @@
 #include <stdio.h>
-#include <string.h>
 #include "../../Registers/registers.c"
 #include "../../ALU/ALU.c"
 #include "../../PC/PC.c"
-#include "../../Memory/memory.c"
+#include "../../Memory/memory.h"
 
 /* TODO: implement the following instruction
  * jal
@@ -16,24 +15,19 @@
 
 /* input: a string of label name
  * output: the index of that label in instructions array
- * Tested
+ * TODO: implement find_register_index function
  * */
 int find_label_index(char* label) {
-    for (int i = 0; i <= INSTRUCTION_MEMORY_GLOBAL_LENGTH; i++) {
-        if ( strncmp(INSTRUCTION_MEMORY_GLOBAL[i][0], label, (int) strlen(label)) == 0 ) {
-            return i;
-        }
-    }
+
     return -1;
 }
 
 
-/*============= arithmetic type, read two register and write to one register using ALU =========== */
+/*============= arithmetic type, read two register and write to one register using ALU =========== */\
 
 /* input:  two register names in string
  * do the caculation than write data back to destination register
  * eg: add, $t0, $t1, $t3
- * TESTED
  * */
 void exec_add(char* destination_register_name, char* register1_name, char* register2_name) {
     int flag_out;
@@ -53,9 +47,8 @@ void exec_add(char* destination_register_name, char* register1_name, char* regis
 
 
 /* input:  two register names in string
- * do the calculation than write data back to destination register
+ * do the caculation than write data back to destination register
  * eg: add, $t0, $t1, $t3
- * TESTED
  * */
 void exec_addi(char* destination_register_name, char* register1_name, char* immediate_name) {
     int flag_out;
@@ -78,7 +71,6 @@ void exec_addi(char* destination_register_name, char* register1_name, char* imme
 /* input:  two register names in string
  * do the caculation than write data back to destination register
  * eg: add, $t0, $t1, $t3
- * TESTED
  * */
 void exec_sub(char* destination_register_name, char* register1_name, char* register2_name ) {
     int flag_out;
@@ -97,8 +89,9 @@ void exec_sub(char* destination_register_name, char* register1_name, char* regis
     }
 }
 
-/* input:  three register names in string
- * TESTED
+/* input:  two register names in string
+ * do the caculation than write data back to destination register
+ * eg: add, $t0, $t1, $t3
  * */
 void exec_slt(char* destination_register_name, char* register1_name, char* register2_name) {
     int flag_out;
@@ -111,9 +104,6 @@ void exec_slt(char* destination_register_name, char* register1_name, char* regis
     write_data_to_register(destination_register_name, ALU(ALU_SLT, register1_value, register2_value, &flag_out));
 }
 
-/* input:  three register names in string
- * TESTED
- * */
 void exec_sltu(char* destination_register_name, char* register1_name, char* register2_name) {
     int flag_out;
     int register1_value;
@@ -128,50 +118,52 @@ void exec_sltu(char* destination_register_name, char* register1_name, char* regi
 
 /*============================= memory type, read or store ============================ */
 
-
-
+/*
 void load_word(char* target_register_name, char* base_address_register_name, int offset){
-    int memory_index    = find_register_value(base_address_register_name);
+    int memory_index                    = find_register_value(base_address_register_name);
     int retrieved_value = read_data_from_memory(memory_index + offset/4);
     write_data_to_register(target_register_name, retrieved_value);
     DATA_MEMORY_GLOBAL[memory_index + offset/4] = 0; // set the value slot to zero
 }
 
 
+
 void store_word(char* target_register_name, char* base_address_register_name, int offset){
-    int memory_index    = find_register_value(base_address_register_name);
+    int memory_index = find_register_value(base_address_register_name);
     int retrieved_value = find_register_value(target_register_name);
     write_data_to_memory(memory_index + offset/4, retrieved_value);
 }
+*/
 
 
 /*===================== jump or branch type, go to another address =================== */
 
-/* input:
+/* input: int register_index1 int reg_index2, int16_t offset, int* pc (pc pointer)
  * eg: beq $t1, $t2, offset
- * TESTED
  * */
-void branch_equal_to(char* register1_name, char* register2_name, char* label) {
+void branch_equal_to(int reg_index1, int reg_index2, char* label) {
+    // if the branch condition is true
+    /* use sub operation in ALU to determine if two registers have the same value */
     int flag;
-    ALU(ALU_SUB, find_register_value(register1_name), find_register_value(register2_name), &flag);
+    ALU(ALU_SUB, register_file[reg_index1], register_file[reg_index2], &flag);
+
     if (flag == ZERO_OUT_SIGNAL) {
         int instruction_index;
         instruction_index = find_label_index(label);
         goto_instruction(instruction_index);
+
     } else {
         goto_next_instruction();
     }
 }
 
-/* input:
- * eg: bnq $t1, $t2, offset
- * TESTED
- * */
-void branch_not_equal_to(char* register1_name, char* register2_name, char* label) {
+
+void branch_not_equal_to(int reg_index1, int reg_index2, char* label) {
+    // if the branch condition is true
+    /* use sub operation in ALU to determine if two registers have the same value */
     int flag;
-    int register1_index = find_register_index(register1_name);
-    int register2_index = find_register_index(register2_name);
-    ALU(ALU_SUB, REGISTER_FILE_GLOBAL[register1_index], REGISTER_FILE_GLOBAL[register2_index], &flag);
+    ALU(ALU_SUB, register_file[reg_index1], register_file[reg_index2], &flag);
+
     if (flag != ZERO_OUT_SIGNAL) {
         int instruction_index;
         instruction_index = find_label_index(label);
@@ -180,3 +172,4 @@ void branch_not_equal_to(char* register1_name, char* register2_name, char* label
         goto_next_instruction();
     }
 }
+

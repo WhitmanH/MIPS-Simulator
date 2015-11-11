@@ -2,14 +2,15 @@
 // Created by Rui Tu on 11/9/15.
 //
 
-
+#include "CPU.h"
+#include "../PC/PC.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 #include "../memory/memory.h"
 
 #define MAX_LINE 100
 #define MAX_LENGTH 100
-
 int INSTRUCTION_MEMORY_GLOBAL_LENGTH;
 
 
