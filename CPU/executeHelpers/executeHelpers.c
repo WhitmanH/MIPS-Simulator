@@ -17,16 +17,14 @@
  * output: the index of that label in instructions array
  * TODO: implement find_register_index function
  * */
-int find_label_index(char* label, int instruction_array_length) {
-    int label_index;
-    for (int i = 0; i <= instruction_array_length; i++) {
-        if (INSTRUCTION_MEMORY_GLOBAL[i][0] == label) {
-
+int find_label_index(char* label) {
+    for (int i = 0; i <= INSTRUCTION_MEMORY_GLOBAL_LENGTH; i++) {
+        if (INSTRUCTION_MEMORY_GLOBAL[i][0] == *label) {
+            return i;
         }
     }
 
-
-    return label_index;
+    return -1;
 }
 
 
