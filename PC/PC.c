@@ -6,12 +6,13 @@
 /*
  * input: the pc variable pointer
  * */
+int PC_GLOBAL;
 void goto_next_instruction() {
-    PC_GLOABL = PC_GLOABL + 1;
+    PC_GLOBAL = PC_GLOBAL + 1;
 }
 
 void goto_instruction(int instruction_location) {
-    PC_GLOABL = instruction_location;
+    PC_GLOBAL = instruction_location;
 }
 
 /*

@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "ALU.h"
-#include "ALUHelpers/ALUhelpers.h"
+#include "ALUHelpers/ALUhelpers.c"
 
 
 int ALU(int opcode, int32_t operand_A, int32_t operand_B, int *flag_out) {

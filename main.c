@@ -10,10 +10,6 @@
 
 int main()
 {
-    char INSTRUCTION_MEMORY_GLOBAL[1000][1000] = {
-            {"addi", '$s1', "$s2", "s3"}
-
-    };
     //cpu_fetch();
     return 0;
 }
