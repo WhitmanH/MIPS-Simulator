@@ -3,7 +3,7 @@
 #include "ALU.h"
 #include "ALUHelpers/ALUhelpers.c"
 
-
+// git test
 int ALU(int opcode, int32_t operand_A, int32_t operand_B, int *flag_out) {
     int out;
 
