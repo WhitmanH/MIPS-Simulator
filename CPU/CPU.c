@@ -19,7 +19,12 @@ int INSTRUCTION_MEMORY_GLOBAL_LENGTH;
      return (strspn(line, accept) == strlen(line));
  }
 void fetch() {
+<<<<<<< HEAD
     //PC_GLOBAL = 0;
+=======
+    //PC_GLOABL = 0;
+
+>>>>>>> origin/master
     // read the misp file and store instructions to the memory property
     char INSTRUCTION_MEMORY_GLOBAL[100][5][15];
     char buffer[MAX_LINE];
@@ -109,3 +114,11 @@ void cpu_run() {
 }
 */
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+>>>>>>> origin/master

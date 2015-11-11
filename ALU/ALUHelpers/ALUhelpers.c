@@ -2,8 +2,8 @@
 #include <stdlib.h>
 #include "../ALU.h"
 
-int add_overflow(int32_t a, int32_t b){
-    int32_t c = a + b;
+int add_overflow(int a, int b){
+    int c = a + b;
     if (a >= 0 && b >= 0 && c < 0)
         return 1;
     if (a < 0 && b < 0 && c >= 0)
@@ -11,8 +11,8 @@ int add_overflow(int32_t a, int32_t b){
     return 0;
 }
 
-int sub_overflow(int32_t a, int32_t b){
-    int32_t c =  a - b;
+int sub_overflow(int a, int b){
+    int c =  a - b;
     if (a >= 0 && b < 0 && c < 0)
         return 1;
     if (a < 0 && b >= 0 && c>= 0)
