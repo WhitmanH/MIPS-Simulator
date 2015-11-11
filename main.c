@@ -8,7 +8,6 @@
 
 int main()
 {
-
     fetch();
 
     return 0;
