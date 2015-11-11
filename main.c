@@ -10,7 +10,6 @@
 int main()
 {
     printf("Hello world here's a test commit!\n");
-    fetch();
 
     return 0;
 }
