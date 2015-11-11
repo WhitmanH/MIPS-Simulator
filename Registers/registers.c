@@ -4,11 +4,11 @@
 
 
 
-int register_file[];
+int REGISTER_FILE[];
 void write_data_to_register(char* register_name, int data){
-    int register_file_index = find_register_index(register_name);
-    register_file[register_file_index] = data;
-    printf("data is %d\n",  register_file[register_file_index] );
+    int REGISTER_FILE_index = find_register_index(register_name);
+    REGISTER_FILE[register_file_index] = data;
+    //printf("data is %d\n",  REGISTER_FILE[register_file_index] );
 }
 
 
@@ -35,7 +35,7 @@ int find_register_index(char* register_name) {
  * output: the current value of this register
  * */
 int find_register_value(char* register_name) {
-    return register_file[find_register_index(register_name)];
+    return REGISTER_FILE[find_register_index(register_name)];
 }
 
 
