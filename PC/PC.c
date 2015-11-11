@@ -1,12 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <jmorecfg.h>
 #include "PC.h"
+
 
 /*
  * input: the pc variable pointer
  * */
-int PC_GLOBAL;
+int PC_GLOBAL = 0;
 void goto_next_instruction() {
     PC_GLOBAL = PC_GLOBAL + 1;
 }
