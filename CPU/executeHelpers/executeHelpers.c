@@ -1,10 +1,7 @@
-#include "executeHelpers.h"
-
-
-#include "../../Registers/registers.h"
-#include "../../ALU/ALU.h"
-#include "../../PC/PC.h"
-#include "../../Memory/memory.h"
+#include "../../Registers/registers.c"
+//#include "../../ALU/ALU.c"
+//#include "../../PC/PC.c"
+//#include "../../Memory/memory.c"
 
 
 /* TODO: implement the following instruction
