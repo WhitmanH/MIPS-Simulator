@@ -4,7 +4,7 @@
 #include "ALUHelpers/ALUhelpers.c"
 
 // git test
-int ALU(int opcode, int32_t operand_A, int32_t operand_B, int *flag_out) {
+int ALU(int opcode, int operand_A, int operand_B, int *flag_out) {
     int out;
 
     if (opcode == ALU_NOP)
@@ -39,7 +39,7 @@ int ALU(int opcode, int32_t operand_A, int32_t operand_B, int *flag_out) {
             break;
 
         case ALU_SLTU:
-            out = ((uint32_t) operand_A <  (uint32_t) operand_B);
+            out = operand_A <  operand_B;
             break;
 
         default:

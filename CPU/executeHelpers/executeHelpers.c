@@ -1,8 +1,8 @@
+#include <stdio.h>
 #include "../../Registers/registers.c"
-//#include "../../ALU/ALU.c"
-//#include "../../PC/PC.c"
-//#include "../../Memory/memory.c"
-
+#include "../../ALU/ALU.c"
+#include "../../PC/PC.c"
+#include "../../Memory/memory.h"
 
 /* TODO: implement the following instruction
  * jal
@@ -17,12 +17,17 @@
  * output: the index of that label in instructions array
  * TODO: implement find_register_index function
  * */
-int find_label_index(char* label) {
+int find_label_index(char* label, int instruction_array_length) {
     int label_index;
+    for (int i = 0; i <= instruction_array_length; i++) {
+        if (INSTRUCTION_MEMORY_GLOBAL[i][0] == label) {
+
+        }
+    }
+
 
     return label_index;
 }
-
 
 
 /*============= arithmetic type, read two register and write to one register using ALU =========== */\
@@ -82,7 +87,8 @@ void exec_sub(char* destination_register_name, char* register1_name, char* regis
     register1_value = find_register_value(register1_name);
     register2_value = find_register_value(register2_name);
 
-    write_data_to_register(destination_register_name, ALU(ALU_SUB, register1_value, register2_value, &flag_out));
+    int data = ALU(ALU_SUB, register1_value, register2_value, &flag_out);
+    write_data_to_register(destination_register_name, data);
 
     if (flag_out == OVERFLOW_SIGNAL) {
         fprintf(stderr, "%d - %d is overflow\n", register1_value, register2_value);
@@ -117,10 +123,9 @@ void exec_sltu(char* destination_register_name, char* register1_name, char* regi
 }
 
 
-
 /*============================= memory type, read or store ============================ */
 
-
+/*
 void load_word(char* target_register_name, char* base_address_register_name, int offset){
     int memory_index                    = find_register_value(base_address_register_name);
     int retrieved_value = read_data_from_memory(memory_index + offset/4);
@@ -135,7 +140,7 @@ void store_word(char* target_register_name, char* base_address_register_name, in
     int retrieved_value = find_register_value(target_register_name);
     write_data_to_memory(memory_index + offset/4, retrieved_value);
 }
-
+*/
 
 
 /*===================== jump or branch type, go to another address =================== */
@@ -174,3 +179,4 @@ void branch_not_equal_to(int reg_index1, int reg_index2, char* label) {
         goto_next_instruction();
     }
 }
+

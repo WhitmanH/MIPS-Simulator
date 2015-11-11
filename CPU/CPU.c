@@ -12,7 +12,6 @@
 #define MAX_LENGTH 100
 
 void cpu_fetch() {
-    //PC_GLOABL = 0;
     // read the misp file and store instructions to the memory property
     char MIPSInstructions[MAX_LENGTH][5];
     char buffer[MAX_LINE];
