@@ -31,6 +31,7 @@ void fetch() {
     char *delimiter = " ,\t\r\n";
 
     pointerFile = fopen("/Users/rui/Google Drive/UO/Fall 2015/CIS 314/Processor-Assignment1/MispTestFiles/bubble.asm", "r");
+   // pointerFile = fopen("/Users/CamelTop/Desktop/Processor-Assignment1/mispTestFiles/gcd.asm", "r");
     if(pointerFile == NULL){
         printf("file not found");
     }

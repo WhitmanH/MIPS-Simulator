@@ -169,7 +169,7 @@ void branch_equal_to(int reg_index1, int reg_index2, char* label) {
     // if the branch condition is true
     /* use sub operation in ALU to determine if two registers have the same value */
     int flag;
-    ALU(ALU_SUB, register_file[reg_index1], register_file[reg_index2], &flag);
+    ALU(ALU_SUB, REGISTER_FILE[reg_index1], REGISTER_FILE[reg_index2], &flag);
 
     if (flag == ZERO_OUT_SIGNAL) {
         int instruction_index;
@@ -186,7 +186,7 @@ void branch_not_equal_to(int reg_index1, int reg_index2, char* label) {
     // if the branch condition is true
     /* use sub operation in ALU to determine if two registers have the same value */
     int flag;
-    ALU(ALU_SUB, register_file[reg_index1], register_file[reg_index2], &flag);
+    ALU(ALU_SUB, REGISTER_FILE[reg_index1], REGISTER_FILE[reg_index2], &flag);
 
     if (flag != ZERO_OUT_SIGNAL) {
         int instruction_index;

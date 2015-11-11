@@ -23,6 +23,7 @@ void control_logic() {
             PC_GLOBAL++;
         }
         else if(strcmp(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][1], "addi") == 0){
+            printf("\ndebug: we are adding registers: %s and %s to register: %s", INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2]);
             exec_addi(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
             PC_GLOBAL++;
         }
@@ -70,10 +71,13 @@ void control_logic() {
         }
     }
 }
+
 int main(){
-    printf("Here in control logic land\n");
     fetch();
     control_logic();
     return 0;
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8a6fe09704e7b3b29f1d7c08c651386b53ac3b7d
 }
