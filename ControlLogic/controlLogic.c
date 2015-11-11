@@ -71,10 +71,3 @@ void control_logic() {
     
 }
 
-int main(){
-    printf("Here in control logic land\n");
-    fetch();
-    control_logic();
-    return 0;
-    
-}

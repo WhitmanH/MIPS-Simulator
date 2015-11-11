@@ -18,11 +18,6 @@
  * TODO: implement find_register_index function
  * */
 int find_label_index(char* label) {
-    for (int i = 0; i <= INSTRUCTION_MEMORY_GLOBAL_LENGTH; i++) {
-        if (INSTRUCTION_MEMORY_GLOBAL[i][0] == *label) {
-            return i;
-        }
-    }
 
     return -1;
 }
