@@ -5,19 +5,22 @@
 
 #include <stdio.h>
 #include <string.h>
+#include "../memory/memory.h"
 
 #define MAX_LINE 100
 #define MAX_LENGTH 100
+
+int INSTRUCTION_MEMORY_GLOBAL_LENGTH;
+
 
  int isBlankLine(const char *line) {
      const char accept[]=" \t\r\n"; // any white spaces or simnly \n.
      return (strspn(line, accept) == strlen(line));
  }
 void fetch() {
-    //PC_GLOABL = 0;
-
+    //PC_GLOBAL = 0;
     // read the misp file and store instructions to the memory property
-    char MIPSInstructions[MAX_LENGTH][5][15];
+    char INSTRUCTION_MEMORY_GLOBAL[100][5][15];
     char buffer[MAX_LINE];
     char* actualMIPS[MAX_LENGTH];
     FILE *pointerFile;
@@ -50,36 +53,37 @@ void fetch() {
                 break;
             }
             else if(token[strlen(token)-1] == ':'){ //labels end with :
-                //MIPSInstructions[i][0] = token;
+                //INSTRUCTION_MEMORY_GLOBAL[i][0] = token;
                 //token[strlen(token)+1] = '\0';
                 lineHasLabel = 1;
-                strcpy(MIPSInstructions[i][0], token);
+                strcpy(INSTRUCTION_MEMORY_GLOBAL[i][0], token);
             } else{
-                //MIPSInstructions[i][p++] = token;
+                //INSTRUCTION_MEMORY_GLOBAL[i][p++] = token;
                 //token[strlen(token)+1] = '\0';
-                strcpy(MIPSInstructions[i][p++], token);
+                strcpy(INSTRUCTION_MEMORY_GLOBAL[i][p++], token);
             }
         }
         if(lineHasLabel == 0){
-            strcpy(MIPSInstructions[i][0], "NULL");
+            strcpy(INSTRUCTION_MEMORY_GLOBAL[i][0], "NULL");
         }
         i++;
         p=1;
         lineHasLabel = 0;
     }
-    printf("instruction = %s\n", MIPSInstructions[1][1]);
-    
+
+    INSTRUCTION_MEMORY_GLOBAL_LENGTH = i;
+    printf("\nCHECK ME OUT %d", INSTRUCTION_MEMORY_GLOBAL_LENGTH);
+
     int z,x;
     for(z = 0; z<29; z++){
         for(x=0; x<5; x++){
-            printf("MIPSInstructions[%d][%d] = %s\n", z,x, MIPSInstructions[z][x]);
+            printf("INSTRUCTION_MEMORY_GLOBAL[%d][%d] = %s\n", z,x, INSTRUCTION_MEMORY_GLOBAL[z][x]);
         }
     }
     
     
     fclose(pointerFile);
     }
-    // set program counter to the starting point
 
 
 
@@ -103,9 +107,3 @@ void cpu_run() {
     }
 }
 */
-
-
-
-
-
-

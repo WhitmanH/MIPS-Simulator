@@ -16,11 +16,11 @@
 
 /* input: a string of label name
  * output: the index of that label in instructions array
- * TESTED
+ * Tested
  * */
 int find_label_index(char* label) {
-    for (int i = 0; i <= Instruction_Memory_Length; i++) {
-        if ( strncmp(Instruction_Memory[i][0], label, (int) strlen(label)) == 0 ) {
+    for (int i = 0; i <= INSTRUCTION_MEMORY_GLOBAL_LENGTH; i++) {
+        if ( strncmp(INSTRUCTION_MEMORY_GLOBAL[i][0], label, (int) strlen(label)) == 0 ) {
             return i;
         }
     }
@@ -130,11 +130,11 @@ void exec_sltu(char* destination_register_name, char* register1_name, char* regi
 
 
 
-void load_word(char* target_register_name, char* base_address_register_name, int offset) {
+void load_word(char* target_register_name, char* base_address_register_name, int offset){
     int memory_index    = find_register_value(base_address_register_name);
     int retrieved_value = read_data_from_memory(memory_index + offset/4);
     write_data_to_register(target_register_name, retrieved_value);
-    Data_Memory[memory_index + offset/4] = 0; // set the value slot to zero
+    DATA_MEMORY_GLOBAL[memory_index + offset/4] = 0; // set the value slot to zero
 }
 
 
@@ -171,7 +171,7 @@ void branch_not_equal_to(char* register1_name, char* register2_name, char* label
     int flag;
     int register1_index = find_register_index(register1_name);
     int register2_index = find_register_index(register2_name);
-    ALU(ALU_SUB, register_file[register1_index], register_file[register2_index], &flag);
+    ALU(ALU_SUB, REGISTER_FILE_GLOBAL[register1_index], REGISTER_FILE_GLOBAL[register2_index], &flag);
     if (flag != ZERO_OUT_SIGNAL) {
         int instruction_index;
         instruction_index = find_label_index(label);

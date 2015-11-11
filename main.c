@@ -10,11 +10,10 @@
 int main()
 {
 
-    exec_addi(Instruction_Memory[0][2], Instruction_Memory[0][3], Instruction_Memory[0][4]);
-    exec_addi(Instruction_Memory[1][2], Instruction_Memory[1][3], Instruction_Memory[1][4]);
+    exec_addi(INSTRUCTION_MEMORY_GLOBAL[0][2], INSTRUCTION_MEMORY_GLOBAL[0][3], INSTRUCTION_MEMORY_GLOBAL[0][4]);
+    exec_addi(INSTRUCTION_MEMORY_GLOBAL[1][2], INSTRUCTION_MEMORY_GLOBAL[1][3], INSTRUCTION_MEMORY_GLOBAL[1][4]);
 
-    branch_not_equal_to(Instruction_Memory[3][2], Instruction_Memory[3][3], Instruction_Memory[3][4]);
-
+    branch_not_equal_to(INSTRUCTION_MEMORY_GLOBAL[3][2], INSTRUCTION_MEMORY_GLOBAL[3][3], INSTRUCTION_MEMORY_GLOBAL[3][4]);
 
     return 0;
 }

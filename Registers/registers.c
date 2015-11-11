@@ -5,13 +5,13 @@
 
 
 
-int register_file[];
+int REGISTER_FILE_GLOBAL[];
 
 void write_data_to_register(char* register_name, int data){
-    int register_file_index = find_register_index(register_name);
-    register_file[register_file_index] = data;
-    register_file[0] = 0;
-    //printf("register's been written to name is %s data is %d\n",  register_name, register_file[register_file_index] );
+    int REGISTER_FILE_GLOBAL_index = find_register_index(register_name);
+    REGISTER_FILE_GLOBAL[REGISTER_FILE_GLOBAL_index] = data;
+    REGISTER_FILE_GLOBAL[0] = 0;
+    //printf("register's been written to name is %s data is %d\n",  register_name, REGISTER_FILE_GLOBAL[REGISTER_FILE_GLOBAL_index] );
 
 }
 
@@ -39,7 +39,7 @@ int find_register_index(char* register_name) {
  * */
 int find_register_value(char* register_name) {
     //printf("\nregister name is %s, register index is %d\n", register_name, find_register_index(register_name));
-    return register_file[find_register_index(register_name)];
+    return REGISTER_FILE_GLOBAL[find_register_index(register_name)];
 }
 
 
