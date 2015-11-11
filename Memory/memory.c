@@ -1,13 +1,12 @@
-//#include "memory.h"
+#include "memory.h"
 
-int DATA_MEMORY_GLOBAL[];
 
 
 int read_data_from_memory(int memory_index) {
-    return DATA_MEMORY_GLOBAL[memory_index];
+    return Data_Memory[memory_index];
 }
 
 
 void write_data_to_memory(int memory_address, int data) {
-    DATA_MEMORY_GLOBAL[memory_address] = data;
+    Data_Memory[memory_address] = data;
 }
