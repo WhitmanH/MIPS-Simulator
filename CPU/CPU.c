@@ -29,7 +29,7 @@ void fetch() {
     char *token;
     char *delimiter = " ,\t\r\n";
 
-    pointerFile = fopen("function.asm", "r");
+    pointerFile = fopen("/Users/CamelTop/Desktop/Processor-Assignment1/mispTestFiles/gcd.asm", "r");
     if(pointerFile == NULL){
         printf("file not found");
     }

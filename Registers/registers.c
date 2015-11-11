@@ -6,7 +6,7 @@
 
 int REGISTER_FILE[];
 void write_data_to_register(char* register_name, int data){
-    int REGISTER_FILE_index = find_register_index(register_name);
+    int register_file_index = find_register_index(register_name);
     REGISTER_FILE[register_file_index] = data;
     //printf("data is %d\n",  REGISTER_FILE[register_file_index] );
 }
