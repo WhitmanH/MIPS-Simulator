@@ -20,9 +20,8 @@ void control_logic() {
         char *operand_A            =  INSTRUCTION_MEMORY_GLOBAL[PC][3];
         char *operand_B            =  INSTRUCTION_MEMORY_GLOBAL[PC][4];
 
-
         if(strcmp(instruction_header, "add") == 0){
-            exec_add(destination_register, operand_A, operand_B);
+            exec_add(destination_register, operand_A, INSTRUCTION_MEMORY_GLOBAL[PC][4]);
             printf("\ndebug: we are adding registers: %s and %s to register: %s", operand_A, operand_B, destination_register);
             PC++;
         }
@@ -64,13 +63,12 @@ void control_logic() {
 
         }
         else if(strcmp(instruction_header, "mult") == 0){
+            exec_mult(destination_register, operand_A, operand_B);
             PC++;
-
         }
         else{
             printf("\n I MISSED THIS INSTRUCTION: %s", instruction_header);
         }
-        PC++;
 
     }
     

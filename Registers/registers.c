@@ -3,8 +3,6 @@
 #include <string.h>
 #include "registers.h"
 
-
-
 int REGISTER_FILE_GLOBAL[];
 
 void write_data_to_register(char* register_name, int data){
@@ -50,6 +48,7 @@ long stringToInt(char *number) {
 
 /* input: a string of immediate name
  * output: value of immediate name
+ *
  * */
 int get_immediate(char* immediate_name) {
     int immediate_value;

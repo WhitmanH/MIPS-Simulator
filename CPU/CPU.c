@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "../memory/memory.h"
+#include "../PC/PC.h"
 
 #define MAX_LINE 100
 #define MAX_LENGTH 100
@@ -28,11 +29,11 @@ void fetch() {
     char *token;
     char *delimiter = " ,\t\r\n";
 
-    pointerFile = fopen("function.asm", "r");
+    pointerFile = fopen("/Users/rui/Google Drive/UO/Fall 2015/CIS 314/Processor-Assignment1/MispTestFiles/bubble.asm", "r");
     if(pointerFile == NULL){
         printf("file not found");
     }
-    
+
     fseek(pointerFile, 0, SEEK_SET);
     int i = 0;
     int p = 1;
@@ -83,9 +84,9 @@ void fetch() {
     
     
     fclose(pointerFile);
-    }
+}
 
-
+// okg
 
 void decode() {
     // pass the instruction header to the control unit to get the correspondent signal
@@ -100,6 +101,7 @@ void execute() {
 
 /*
 void cpu_run() {
+    initialize_data_memory();
     while (has_next_instruction()) {
         fetch();
         decode();

@@ -97,6 +97,28 @@ void exec_sub(char* destination_register_name, char* register1_name, char* regis
     }
 }
 
+/*
+ * TESTED
+ * */
+void exec_mult(char* destination_register_name, char* register1_name, char* register2_name ) {
+    int flag_out;
+    int register1_value;
+    int register2_value;
+
+    register1_value = find_register_value(register1_name);
+    register2_value = find_register_value(register2_name);
+
+    int data = ALU(ALU_MULT, register1_value, register2_value, &flag_out);
+    write_data_to_register(destination_register_name, data);
+
+    if (flag_out == OVERFLOW_SIGNAL) {
+        fprintf(stderr, "%d - %d is overflow\n", register1_value, register2_value);
+        exit(1);
+    }
+}
+
+
+
 /* input:  three register names in string
  * TESTED
  * */
