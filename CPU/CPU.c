@@ -10,8 +10,8 @@
 
 #define MAX_LINE 100
 #define MAX_LENGTH 100
-int pc;
-void fetch() {
+
+void cpu_fetch() {
     //PC_GLOABL = 0;
     // read the misp file and store instructions to the memory property
     char MIPSInstructions[MAX_LENGTH][5];
@@ -22,7 +22,9 @@ void fetch() {
     char *token;
     char *delimiter = " ,\t\r\n";
 
-    pointerFile = fopen("function.asm", "r");
+    //pointerFile = fopen("function.asm", "r");
+    pointerFile = fopen("/Users/rui/Google Drive/UO/Fall 2015/CIS 314/Processor-Assignment1/MispTestFiles/function.asm", "r");
+
     if(pointerFile == NULL){
         printf("file not found");
     }
@@ -51,18 +53,19 @@ void fetch() {
     }
 
     fclose(pointerFile);
-    }
+
+}
     // set program counter to the starting point
 
 
 
-void decode() {
+void cpu_decode() {
     // pass the instruction header to the control unit to get the correspondent signal
     // find out which instructions to execute
 }
 
 
-void execute() {
+void cpu_execute() {
     //execute the instructions
 
 }
@@ -70,9 +73,9 @@ void execute() {
 
 void cpu_run() {
     while (has_next_instruction()) {
-        fetch();
-        decode();
-        execute();
+        cpu_fetch();
+        cpu_decode();
+        cpu_execute();
     }
 }
 

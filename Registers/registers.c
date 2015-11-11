@@ -2,14 +2,14 @@
 #include <stdlib.h>
 #include <string.h>
 #include "registers.h"
-#include "PC.h"
-#include "../Memory/memory.h"
-#include "../ALU/ALU.h"
+#include "../PC/PC.c"
+#include "../Memory/memory.c"
+#include "../ALU/ALU.c"
 
 
 void write_data_to_register(char* register_name, int data){
-    int regfile_index = find_register_index(register_name);
-    register_file[regfile_index] = data;
+    int register_file_index = find_register_index(register_name);
+    register_file[register_file_index] = data;
 }
 
 

@@ -14,7 +14,7 @@
 #define ALU_SLTU        0x07    /* set if less than (unsigned)*/
 
 
-#define OVERFLOW_SIGNAL  (int)'Over_flow'
-#define ZERO_OUT_SIGNAL (int)'Zero_Out'
+#define OVERFLOW_SIGNAL  0xA
+#define ZERO_OUT_SIGNAL  0xB
 
-int ALU(uint8_t opcode, int32_t operand_A, int32_t operand_B, int *status_out);
+int ALU(int opcode, int32_t operand_A, int32_t operand_B, int *status_out);

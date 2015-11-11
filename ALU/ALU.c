@@ -4,7 +4,7 @@
 #include "ALUHelpers/ALUhelpers.h"
 
 
-int ALU(uint8_t opcode, int32_t operand_A, int32_t operand_B, int *flag_out) {
+int ALU(int opcode, int32_t operand_A, int32_t operand_B, int *flag_out) {
     int out;
 
     if (opcode == ALU_NOP)
