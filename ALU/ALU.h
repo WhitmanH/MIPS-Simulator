@@ -12,9 +12,10 @@
 #define ALU_SLT         0x05    /* set if less than */
 #define ALU_NOR         0x06
 #define ALU_SLTU        0x07    /* set if less than (unsigned)*/
+#define ALU_MULT        0x08
 
 
 #define OVERFLOW_SIGNAL  0xA
 #define ZERO_OUT_SIGNAL  0xB
 
-int ALU(int opcode, int32_t operand_A, int32_t operand_B, int *status_out);
+int ALU(int opcode, int operand_A, int operand_B, int *status_out);

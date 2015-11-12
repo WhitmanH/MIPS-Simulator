@@ -8,16 +8,18 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../memory/memory.h"
+#include "../memory/memory.c"
 
 #define MAX_LINE 100
 #define MAX_LENGTH 100
 int INSTRUCTION_MEMORY_GLOBAL_LENGTH;
 
 
- int isBlankLine(const char *line) {
-     const char accept[]=" \t\r\n"; // any white spaces or simnly \n.
-     return (strspn(line, accept) == strlen(line));
- }
+int isBlankLine(const char *line) {
+    const char accept[]=" \t\r\n"; // any white spaces or simnly \n.
+    return (strspn(line, accept) == strlen(line));
+}
+
 void fetch() {
     //PC_GLOBAL = 0;
     // read the misp file and store instructions to the memory property
@@ -29,7 +31,7 @@ void fetch() {
     char *token;
     char *delimiter = " ,\t\r\n";
 
-    pointerFile = fopen("/Users/CamelTop/Desktop/Processor-Assignment1/mispTestFiles/gcd.asm", "r");
+    pointerFile = fopen("/Users/CamelTop/Desktop/Processor-Assignment1/mispTestFiles/function.asm", "r");
     if(pointerFile == NULL){
         printf("file not found");
     }
@@ -39,6 +41,9 @@ void fetch() {
     int p = 1;
     int sizeOfIndexArray = 0;
     int lineHasLabel = 0;
+    int weHaveSomething = 0;
+    char *registerChange;
+    char *registerIndexChange;
     while(i < MAX_LINE && fgets(buffer, MAX_LINE, pointerFile)){
         if(buffer[0] == '\n' || buffer[0] == '#' || buffer[0] == '0' || buffer[0] =='\r'){
             continue;
@@ -58,18 +63,31 @@ void fetch() {
                 //token[strlen(token)+1] = '\0';
                 lineHasLabel = 1;
                 strcpy(INSTRUCTION_MEMORY_GLOBAL[i][0], token);
-            } else{
+            }
+            else if(token[strlen(token)-1] == ')'){
+                printf("\n\n\n FOUND HERE:");
+                registerIndexChange = strtok(token, "(");
+                registerChange = strtok(NULL, "()");
+                strcpy(INSTRUCTION_MEMORY_GLOBAL[i][p++], registerChange);
+                strcpy(INSTRUCTION_MEMORY_GLOBAL[i][p++], registerIndexChange);
+            }
+            else{
                 //INSTRUCTION_MEMORY_GLOBAL[i][p++] = token;
                 //token[strlen(token)+1] = '\0';
                 strcpy(INSTRUCTION_MEMORY_GLOBAL[i][p++], token);
+                weHaveSomething++;
             }
         }
         if(lineHasLabel == 0){
             strcpy(INSTRUCTION_MEMORY_GLOBAL[i][0], "NULL");
         }
+        if(weHaveSomething == 0){
+            i--;
+        }
         i++;
         p=1;
         lineHasLabel = 0;
+        weHaveSomething = 0;
     }
 
     INSTRUCTION_MEMORY_GLOBAL_LENGTH = i;

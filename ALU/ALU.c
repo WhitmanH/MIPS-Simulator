@@ -24,12 +24,18 @@ int ALU(int opcode, int operand_A, int operand_B, int *flag_out) {
             }
             out = operand_A - operand_B;
             break;
+
+        case ALU_MULT:
+            out = operand_A * operand_B;
+            break;
+
         case ALU_AND:
             out = operand_A & operand_B;
             break;
         case ALU_OR:
             out = operand_A | operand_B;
             break;
+
 
         case ALU_NOR:
             out = ~(operand_A | operand_B);
