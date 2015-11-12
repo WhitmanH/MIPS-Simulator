@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include "../PC/PC.h"
 #include "../CPU/CPU.c"
-//#include "../CPU/executeHelpers/executeHelpers.h"
+#include "../CPU/CPU.h"
+#include "../CPU/executeHelpers/executeHelpers.h"
 #include "../CPU/executeHelpers/executeHelpers.c"
 
 extern int INSTRUCTION_MEMORY_GLOBAL_LENGTH;
@@ -13,6 +14,7 @@ extern int PC_GLOBAL;
 int charToNumber(char *token){
     int number;
     number = atoi(token);
+    printf("\n number is %d", number);
     return number;
 }
 
@@ -26,40 +28,40 @@ void control_logic() {
     while(PC_GLOBAL < (INSTRUCTION_MEMORY_GLOBAL_LENGTH -1)){
         if(strcmp(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][1], "add") == 0){
             exec_add(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
-            //printf("\ndebug: we are adding registers: %s and %s to register: %s", INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2]);
+            printf("\ndebug: we are adding registers: %s and %s to register: %s", INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2]);
             PC_GLOBAL++;
         }
         else if(strcmp(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][1], "addi") == 0){
-            //printf("\ndebug: we are adding registers: %s and %s to register: %s", INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2]);
+            printf("\ndebug: we are adding registers: %s and %s to register: %s", INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2]);
             exec_addi(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
             PC_GLOBAL++;
         }
         else if(strcmp(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][1], "sub") == 0){
-            exec_sub(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
+            //exec_sub(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
             PC_GLOBAL++;
         }
         else if(strcmp(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][1], "slt") == 0){
-            exec_slt(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
+            //exec_slt(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
             PC_GLOBAL++;
         }
         else if(strcmp(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][1], "sltu") == 0){
-            exec_sltu(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
+            //exec_sltu(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
             PC_GLOBAL++;
         }
         else if(strcmp(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][1], "lw") == 0){
-            load_word(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], charToNumber(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]));
-            charToNumber(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
+            //load_word(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], charToNumber(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]));
+            //charToNumber(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
             PC_GLOBAL++;
         }
         else if(strcmp(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][1], "sw") == 0){
             PC_GLOBAL++;
         }
         else if(strcmp(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][1], "beq") == 0){
-            branch_equal_to(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
+            //branch_equal_to(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
             PC_GLOBAL++;
         }
         else if(strcmp(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][1], "bne") == 0){
-            branch_not_equal_to(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
+           // branch_not_equal_to(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][2], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][3], INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][4]);
             PC_GLOBAL++;
         }
         else if(strcmp(INSTRUCTION_MEMORY_GLOBAL[PC_GLOBAL][1], "jal") == 0){

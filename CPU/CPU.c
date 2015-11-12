@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../memory/memory.h"
-
 #include "../memory/memory.c"
 
 #include "../PC/PC.h"
@@ -17,6 +16,7 @@
 #define MAX_LINE 100
 #define MAX_LENGTH 100
 int INSTRUCTION_MEMORY_GLOBAL_LENGTH;
+char INSTRUCTION_MEMORY_GLOBAL[100][5][15];
 
 
 int isBlankLine(const char *line) {
@@ -27,7 +27,6 @@ int isBlankLine(const char *line) {
 void fetch() {
     //PC_GLOBAL = 0;
     // read the misp file and store instructions to the memory property
-    char INSTRUCTION_MEMORY_GLOBAL[100][5][15];
     char buffer[MAX_LINE];
     char* actualMIPS[MAX_LENGTH];
     FILE *pointerFile;
@@ -68,8 +67,6 @@ void fetch() {
                 break;
             }
             else if(token[strlen(token)-1] == ':'){ //labels end with :
-                //INSTRUCTION_MEMORY_GLOBAL[i][0] = token;
-                //token[strlen(token)+1] = '\0';
                 lineHasLabel = 1;
                 strcpy(INSTRUCTION_MEMORY_GLOBAL[i][0], token);
             }
@@ -77,12 +74,10 @@ void fetch() {
                 printf("\n\n\n FOUND HERE:");
                 registerIndexChange = strtok(token, "(");
                 registerChange = strtok(NULL, "()");
-                strcpy(INSTRUCTION_MEMORY_GLOBAL[i][p++], registerChange);
-                strcpy(INSTRUCTION_MEMORY_GLOBAL[i][p++], registerIndexChange);
+                strcpy(INSTRUCTION_MEMORY_GLOBAL[i][3], registerChange);
+                strcpy(INSTRUCTION_MEMORY_GLOBAL[i][4], registerIndexChange);
             }
             else{
-                //INSTRUCTION_MEMORY_GLOBAL[i][p++] = token;
-                //token[strlen(token)+1] = '\0';
                 strcpy(INSTRUCTION_MEMORY_GLOBAL[i][p++], token);
                 weHaveSomething++;
             }
