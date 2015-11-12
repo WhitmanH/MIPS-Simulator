@@ -83,5 +83,4 @@ void control_logic() {
 int main(){
     fetch();
     control_logic();
-    return 0;
 }

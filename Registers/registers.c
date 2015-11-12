@@ -42,6 +42,7 @@ long stringToInt(char *number) {
 
 /* input: a string of immediate name
  * output: value of immediate name
+ *
  * */
 int get_immediate(char* immediate_name) {
     int immediate_value;
