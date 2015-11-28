@@ -10,6 +10,8 @@ $ ./main
 It will currently run a bubble sort MIPs file, outputting a sorted list of numbers in memory. Other files include fibonacci.asm,
 gcd.asm, function.asm, and other singular test files found inside.To change, alter text file in main().
 
-Supports a multithreaded pipeline, as well as having a direct mapped cache for memory efficency (tracks hits and misses)
+Supports a multithreaded pipeline, as well as having a direct mapped cache for memory efficency (tracks hits and misses).
+
+Very simple hazard checking, so it will only run concurrently on more simple instructions/less dependant instructions.
 
 
